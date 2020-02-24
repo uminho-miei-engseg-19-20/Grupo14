@@ -7,34 +7,35 @@ The higher the number the more entropy needed.When using 1024 with random there 
 Haveged was created to remedy low-entropy conditions so when using random id does not take a long time anymore to generate random bytes.
 
 **Question P2.1**
-	
-	user@CSI:~/Aulas/Aula2/ShamirSharing$ openssl genrsa -aes128 -out mykey.pem 1024Generating RSA private key, 1024 bit long modulus
-```
-		user@CSI:~/Aulas/Aula2/ShamirSharing$ openssl req -key mykey.pem -new -x509 -days 365 -out mykey.crt
-		Enter pass phrase for mykey.pem:
-		You are about to be asked to enter information that will be incorporated
-		into your certificate request.
-		What you are about to enter is what is called a Distinguished Name or a DN.
-		There are quite a few fields but you can leave some blank
-		For some fields there will be a default value,
-		If you enter '.', the field will be left blank.
-		-----
-		Country Name (2 letter code) [AU]:PO
-		State or Province Name (full name) [Some-State]:kevin kevin
-		Locality Name (eg, city) []:damascus
-		Organization Name (eg, company) [Internet Widgits Pty Ltd]:kk
-		Organizational Unit Name (eg, section) []:it
-		Common Name (e.g. server FQDN or YOUR name) []:kevin
 
-		user@CSI:~/Aulas/Aula2/ShamirSharing$ python createSharedSecret-app.py 8 5 kevin mykey.pem
-		Private key passphrase: hello
-		Secret: Now we have an extremely confidential secret
+```	
+user@CSI:~/Aulas/Aula2/ShamirSharing$ openssl genrsa -aes128 -out mykey.pem 1024Generating RSA private key, 1024 bit long modulus
 
-		user@CSI:~/Aulas/Aula2/ShamirSharing$ python recoverSecretFromComponents-app.py 5 kevin /home/user/Aulas/Aula2/ShamirSharing/mykey.crt
+user@CSI:~/Aulas/Aula2/ShamirSharing$ openssl req -key mykey.pem -new -x509 -days 365 -out mykey.crt
+Enter pass phrase for mykey.pem:
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:PO
+State or Province Name (full name) [Some-State]:kevin kevin
+Locality Name (eg, city) []:damascus
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:kk
+Organizational Unit Name (eg, section) []:it
+Common Name (e.g. server FQDN or YOUR name) []:kevin
 
-		user@CSI:~/Aulas/Aula2/ShamirSharing$ python recoverSecretFromAllComponents-app.py 5 kevin /home/user/Aulas/Aula2/ShamirSharing/mykey.crt
+user@CSI:~/Aulas/Aula2/ShamirSharing$ python createSharedSecret-app.py 8 5 kevin mykey.pem
+Private key passphrase: hello
+Secret: Now we have an extremely confidential secret
 
-		user@CSI:~/Aulas/Aula2/ShamirSharing$ python recoverSecretFromAllComponents-app.py 8 kevin /home/user/Aulas/Aula2/ShamirSharing/mykey.crt
+user@CSI:~/Aulas/Aula2/ShamirSharing$ python recoverSecretFromComponents-app.py 5 kevin /home/user/Aulas/Aula2/ShamirSharing/mykey.crt
+
+user@CSI:~/Aulas/Aula2/ShamirSharing$ python recoverSecretFromAllComponents-app.py 5 kevin /home/user/Aulas/Aula2/ShamirSharing/mykey.crt
+
+user@CSI:~/Aulas/Aula2/ShamirSharing$ python recoverSecretFromAllComponents-app.py 8 kevin /home/user/Aulas/Aula2/ShamirSharing/mykey.crt
 ```
 
 
@@ -121,7 +122,8 @@ Certificate:
                 Policy: X509v3 Any Policy
                   CPS: http://pki.registradores.org/normativa/index.htm
                   User Notice:
-                    Explicit Text: Certificado sujeto a la Declaraci�n de Pr�cticas de Certificaci�n del Colegio de Registradores de la Propiedad y Mercantiles de Espa�a (� 2016)
+                    Explicit Text: Certificado sujeto a la Declaraci�n de Pr�cticas de Certificaci�n 
+		    del Colegio de Registradores de la Propiedad y Mercantiles de Espa�a (� 2016)
 
             Authority Information Access: 
                 CA Issuers - URI:http://pki.registradores.org/certificados/ac_raiz_psc_corpme.crt
@@ -133,7 +135,8 @@ Certificate:
 
                 Full Name:
                   URI:http://pki.registradores.org/crls/arl_psc_corpme.crl
-                  URI:ldap://ldap.registradores.org/CN=AC%20RAIZ,O=Colegio%20de%20Registradores%20-%20Q2863012G,C=ES?authorityRevocationList?base?objectclass=cRLDistributionPoint
+                  URI:ldap://ldap.registradores.org/CN=AC%20RAIZ,O=Colegio%20de%20Registradores%20-%20Q2863012G,
+		  C=ES?authorityRevocationList?base?objectclass=cRLDistributionPoint
 
     Signature Algorithm: sha512WithRSAEncryption
          4d:13:0b:be:d3:86:d9:a6:85:97:fd:ce:1e:9d:42:5f:c1:dc:
