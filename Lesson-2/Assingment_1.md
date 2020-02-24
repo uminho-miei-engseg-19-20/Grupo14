@@ -1,55 +1,62 @@
-Question P1.1
-	The higher the number the more entropy needed.When using 1024 with random there isn't enough entropy to satisfy the request for random numbers
-	that is why it is taking a long time. While in urandom that is using a seed that the operating system has generated and it's with enough entropy to generate pseudo-randomness
+**Question P1.1**
+
+The higher the number the more entropy needed.When using 1024 with random there isn't enough entropy to satisfy the request for random numbers that is why it is taking a long time. While in urandom that is using a seed that the operating system has generated and it's with enough entropy to generate pseudo-randomness
         
-Question P1.2
-        Haveged was created to remedy low-entropy conditions so when using random id does not take a long time anymore to generate random bytes	
+**Question P1.2**
 
-Question P2.1
-	user@CSI:~/Aulas/Aula2/ShamirSharing$ openssl genrsa -aes128 -out mykey.pem 1024Generating RSA private key, 1024 bit long modulus
+Haveged was created to remedy low-entropy conditions so when using random id does not take a long time anymore to generate random bytes.
+
+**Question P2.1**
 	
-	user@CSI:~/Aulas/Aula2/ShamirSharing$ openssl req -key mykey.pem -new -x509 -days 365 -out mykey.crt
-        Enter pass phrase for mykey.pem:
-        You are about to be asked to enter information that will be incorporated
-	into your certificate request.
-	What you are about to enter is what is called a Distinguished Name or a DN.
-	There are quite a few fields but you can leave some blank
-	For some fields there will be a default value,
-	If you enter '.', the field will be left blank.
-	-----
-	Country Name (2 letter code) [AU]:PO
-	State or Province Name (full name) [Some-State]:kevin kevin
-	Locality Name (eg, city) []:damascus
-	Organization Name (eg, company) [Internet Widgits Pty Ltd]:kk
-	Organizational Unit Name (eg, section) []:it
-	Common Name (e.g. server FQDN or YOUR name) []:kevin
+	user@CSI:~/Aulas/Aula2/ShamirSharing$ openssl genrsa -aes128 -out mykey.pem 1024Generating RSA private key, 1024 bit long modulus
+```
+		user@CSI:~/Aulas/Aula2/ShamirSharing$ openssl req -key mykey.pem -new -x509 -days 365 -out mykey.crt
+		Enter pass phrase for mykey.pem:
+		You are about to be asked to enter information that will be incorporated
+		into your certificate request.
+		What you are about to enter is what is called a Distinguished Name or a DN.
+		There are quite a few fields but you can leave some blank
+		For some fields there will be a default value,
+		If you enter '.', the field will be left blank.
+		-----
+		Country Name (2 letter code) [AU]:PO
+		State or Province Name (full name) [Some-State]:kevin kevin
+		Locality Name (eg, city) []:damascus
+		Organization Name (eg, company) [Internet Widgits Pty Ltd]:kk
+		Organizational Unit Name (eg, section) []:it
+		Common Name (e.g. server FQDN or YOUR name) []:kevin
 
-	user@CSI:~/Aulas/Aula2/ShamirSharing$ python createSharedSecret-app.py 8 5 kevin mykey.pem
-	Private key passphrase: hello
-	Secret: Now we have an extremely confidential secret
+		user@CSI:~/Aulas/Aula2/ShamirSharing$ python createSharedSecret-app.py 8 5 kevin mykey.pem
+		Private key passphrase: hello
+		Secret: Now we have an extremely confidential secret
 
-	user@CSI:~/Aulas/Aula2/ShamirSharing$ python recoverSecretFromComponents-app.py 5 kevin /home/user/Aulas/Aula2/ShamirSharing/mykey.crt
+		user@CSI:~/Aulas/Aula2/ShamirSharing$ python recoverSecretFromComponents-app.py 5 kevin /home/user/Aulas/Aula2/ShamirSharing/mykey.crt
 
-	user@CSI:~/Aulas/Aula2/ShamirSharing$ python recoverSecretFromAllComponents-app.py 5 kevin /home/user/Aulas/Aula2/ShamirSharing/mykey.crt
+		user@CSI:~/Aulas/Aula2/ShamirSharing$ python recoverSecretFromAllComponents-app.py 5 kevin /home/user/Aulas/Aula2/ShamirSharing/mykey.crt
 
-	user@CSI:~/Aulas/Aula2/ShamirSharing$ python recoverSecretFromAllComponents-app.py 8 kevin /home/user/Aulas/Aula2/ShamirSharing/mykey.crt
-
-
-	We should use recoverSecretFromAllComponents-app.py instead recoverSecretFromComponents-app.py when we need all secret holders to unlock the secret
-	For example:
-   	 Problem: Company XYZ needs to secure their vault's passcode. They could use something standard, such as AES, but what if the holder
-	 of the key is unavailable or dies? What if the key is compromised via a malicious hacker or the holder of the key turns rogue, and uses their power over the vault to their benefit?
-
-	 This is where SSS comes in. It can be used to encrypt the vault's passcode and generate
-	 a certain number of shares, where a certain number of shares can be allocated to each executive within Company XYZ. Now, only if they pool their shares can they unlock the vault. The threshold can be appropriately set for the number of executives,
-	 so the vault is always able to be accessed by the authorized individuals. Should a share or two fall into the wrong hands, they couldn't open the passcode unless the other executives cooperated
+		user@CSI:~/Aulas/Aula2/ShamirSharing$ python recoverSecretFromAllComponents-app.py 8 kevin /home/user/Aulas/Aula2/ShamirSharing/mykey.crt
+```
 
 
-Question P4.1
+We should use recoverSecretFromAllComponents-app.py instead recoverSecretFromComponents-app.py when we need all secret holders to unlock the secret.
+
+For example:
+
+Problem: Company XYZ needs to secure their vault's passcode. They could use something standard, such as AES, but what if the holder of the key is unavailable or dies? What if the key is compromised via a malicious hacker or the holder of the key turns rogue, and uses their power over the vault to their benefit?
+
+This is where SSS comes in. It can be used to encrypt the vault's passcode and generate a certain number of shares, where a certain number of shares can be allocated to each executive within Company XYZ. Now, only if they pool their shares can they unlock the vault.
+
+The threshold can be appropriately set for the number of executives, so the vault is always able to be accessed by the authorized individuals. Should a share or two fall into the wrong hands, they couldn't open the passcode unless the other executives cooperated.
+
+**Question P3.1**
+
+
+
+**Question P4.1**
 
 Spain Qualified Certificate issued by Autoridad de Certificación de los Registradores - AC Interna:
 
-
+```
 user@CSI:~/Aulas/Aula2$ fold -w67 cert.crt > cert1.crt
 user@CSI:~/Aulas/Aula2$ openssl x509 -in cert1.crt -text -noout
 Certificate:
@@ -162,5 +169,6 @@ Certificate:
  Signature Algorithm: sha512WithRSAEncryption
  Public Key Algorithm: rsaEncryption
  Public-Key: (4096 bit)
+ ```
  
  Since the certificate is valid until 2028 so the algorithms and key sizes used in the certificate are appropriate.
