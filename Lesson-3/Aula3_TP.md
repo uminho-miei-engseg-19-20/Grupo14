@@ -2,6 +2,12 @@
 
 ## Group 14
 
+### Question 1
+
+The modified files were upoloaded to GithHub, on the /Grupo14/Lesson-3/Files folder.
+
+First the Signer calls the init-app.py, with the -init flag, where he generates the pRDashComponents. 
+
 ### Question 2.1
 
 For this exercise we were asked to test the SSL Server test for the designated sites. Being the group 14, we had to choose two sites of companies listed in the NYSE (New York Stock Exchange), and those companies were **American Airlines Group Inc** and **Berkshire Hathaway Inc**.
