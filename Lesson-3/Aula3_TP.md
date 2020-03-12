@@ -6,7 +6,9 @@
 
 The modified files were upoloaded to GithHub, on the /Grupo14/Lesson-3/Files folder.
 
-First the Signer calls the init-app.py, with the -init flag, where he generates the pRDashComponents. 
+First the Signer calls the init-app.py, with the -init flag, where he generates the pRDashComponents. Then the Signer sends the pRDashComponents to the Requester.
+
+The Requester starts the blind-app.py, where he states which message he wants tho blind and the pRDashComponents received. It also generates three components: **blindComponents**, **pRComponents** and **blindM**.
 
 ### Question 2.1
 
