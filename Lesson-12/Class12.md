@@ -36,7 +36,7 @@ GRANT ALTER TABLE TO UnauthorizedUser
 
 - **8 -** On this page is given some more insight regarding SQL Injection attacks, about it's limitations, in what languages this type of attack is more common, and so on. No action is requested from the user.
 
-- ** 9 -** This page challenges the user to manipulate the query in order to retrieve all the users from the table. This was accomplished with the query:
+- **9 -** This page challenges the user to manipulate the query in order to retrieve all the users from the table. This was accomplished with the query:
 ```SQL
 SELECT * FROM user_data 
 WHERE first_name = 'John' 
@@ -150,6 +150,6 @@ Problem: Most heroes we had as a child were quite obvious ones.
 
 - **12 -** In this page close to the end, we are challenged to exploit CVE-2013-7285 (XStream), by entering the XML which represents a contact directly in the given text box.
 
-- **13- ** Finally, a brief summary is given about the topic of this class, denoting that **Open source components are the new attack vector**.
+- **13 -** Finally, a brief summary is given about the topic of this class, denoting that **Open source components are the new attack vector**.
 
 
